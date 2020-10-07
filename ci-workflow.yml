@@ -5,6 +5,13 @@ steps:
   environment:
     GITAUTH:
       from_secret: GITAUTH
-  image: imzihad21/n00b-dev-android
+    DOCKER_USERNAME:
+      from_secret: DOCKER_USERNAME
+    DOCKER_PASSWORD:
+      from_secret: DOCKER_PASSWORD
+  image: registry
   commands:
-  - bash runner.sh
+  - docker run -d -p 5000:5000 --restart always --name registry registry:2
+  - docker login -u ${DOCKER_USERNAME} --p ${DOCKER_PASSWORD}
+  - docker build -t imzihad21/n00b-dev-tests/evox-ten .
+  - docker push imzihad21/n00b-dev-tests
