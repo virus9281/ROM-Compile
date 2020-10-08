@@ -1,0 +1,10 @@
+kind: pipeline
+name: Rom-Builder
+steps:
+- name: Rom-Builder
+  environment:
+    GITAUTH:
+      from_secret: GITAUTH
+  image: imzihad21/n00b-dev-android
+  jobs:
+  - bash runner.sh
