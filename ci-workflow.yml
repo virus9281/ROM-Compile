@@ -1,23 +1,10 @@
-{
-  "kind": "pipeline",
-  "name": "Rom-Builder",
-  "steps": [
-    {
-      "name": "Rom-Builder",
-      "environment": {
-        "GITAUTH": {
-          "from_secret": "GITAUTH"
-        }
-      },
-      "image": "imzihad21/n00b-dev-android",
-      "commands": [
-        "bash runner.sh"
-      ]
-    }
-  ],
-  "language": "ruby",
-  "os": [
-    "linux"
-  ],
-  "dist": "xenial"
-}
+kind: pipeline
+name: Rom-Builder
+steps:
+- name: Rom-Builder
+  environment:
+    GITAUTH:
+      from_secret: GITAUTH
+  image: imzihad21/n00b-dev-android
+  commands:
+  - bash runner.sh 
